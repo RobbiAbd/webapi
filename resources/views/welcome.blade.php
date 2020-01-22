@@ -8,6 +8,6 @@
     <body>
        <example-component id="app"></example-component>
 
-       <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+       <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
     </body>
 </html>
