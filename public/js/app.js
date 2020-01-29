@@ -1948,13 +1948,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      data: [],
+      loading: false
+    };
+  },
   mounted: function mounted() {
     this.getData();
   },
   methods: {
     getData: function getData() {
-      axios.get('/testapi');
+      var _this = this;
+
+      this.loading = true;
+      axios.get('/testapi').then(function (res) {
+        _this.data = res.data.data;
+        _this.loading = false;
+      })["catch"](function (error) {
+        _this.data = error.message;
+        _this.loading = false;
+      });
     }
   }
 });
@@ -37331,30 +37355,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [_vm._v("Test API")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
-          ])
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Test API")]),
+          _vm._v(" "),
+          _vm.loading == false
+            ? _c("div", [
+                _c("div", { staticClass: "card-body" }, [
+                  _vm._v(
+                    "\n                        I'm an example component.\n\n                        "
+                  ),
+                  _c("p", { staticClass: "mt-2" }, [_vm._v("response :")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-danger" }, [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.data) +
+                        "\n                        "
+                    )
+                  ])
+                ])
+              ])
+            : _c("div", [
+                _vm._v("\n                    loading...\n                ")
+              ])
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -9,6 +9,6 @@ class TestApiController extends Controller
 {
     public function test()
     {
-    	return Student::all();
+    	return Student::paginate(2);
     }
 }
