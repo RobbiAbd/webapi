@@ -12,12 +12,12 @@ class TeacherSeeder extends Seeder
      */
     public function run()
     {
-        Teacher::insert([
+        Teacher::create([
         	'nama' => 'Robbi',
         	'jk' => 'L'
         ]);
 
-        Teacher::insert([
+        Teacher::create([
         	'nama' => 'Rahma',
         	'jk' => 'P'
         ]);

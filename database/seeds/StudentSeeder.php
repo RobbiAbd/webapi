@@ -12,12 +12,12 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
-        Student::insert([
+        Student::create([
         	'nama'	=> 'Robbi Abdul Rohman',
         	'jk'	=> 'L'
         ]);
 
-        Student::insert([
+        Student::create([
         	'nama'	=> 'Megumin',
         	'jk'	=> 'P'
         ]);
